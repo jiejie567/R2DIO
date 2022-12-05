@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(ssl_slam3)
+project(r2dio)
 #add_definitions(-w)
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_STANDARD 14)
@@ -51,11 +51,11 @@ catkin_package(
   INCLUDE_DIRS include
 )
 
-add_executable(ssl_slam3_laser_processing_node  src/laserProcessingNode.cpp src/laserProcessingClass.cpp src/param.cpp src/utils.cpp )
-target_link_libraries(ssl_slam3_laser_processing_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})
+add_executable(r2dio_laser_processing_node  src/laserProcessingNode.cpp src/laserProcessingClass.cpp src/param.cpp src/utils.cpp )
+target_link_libraries(r2dio_laser_processing_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})
 
-add_executable(ssl_slam3_odom_estimation_node src/utils.cpp src/odomEstimationNode.cpp src/param.cpp src/odomEstimationClass.cpp src/imuOptimizationFactor.cpp src/lidarOptimizationFactor.cpp src/imuPreintegrationClass.cpp src/param.cpp src/poseOptimizationFactor.cpp)
-target_link_libraries(ssl_slam3_odom_estimation_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})
+add_executable(r2dio_odom_estimation_node src/utils.cpp src/odomEstimationNode.cpp src/param.cpp src/odomEstimationClass.cpp src/imuOptimizationFactor.cpp src/lidarOptimizationFactor.cpp src/imuPreintegrationClass.cpp src/param.cpp src/poseOptimizationFactor.cpp)
+target_link_libraries(r2dio_odom_estimation_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})
 
-add_executable(ssl_slam3_laser_mapping_node src/laserMappingNode.cpp src/utils.cpp src/laserMappingClass.cpp src/param.cpp)
-target_link_libraries(ssl_slam3_laser_mapping_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})
+add_executable(r2dio_laser_mapping_node src/laserMappingNode.cpp src/utils.cpp src/laserMappingClass.cpp src/param.cpp)
+target_link_libraries(r2dio_laser_mapping_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})

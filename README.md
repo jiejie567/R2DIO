@@ -35,9 +35,9 @@ A summary video demo can be found at [Video](https://youtu.be/Uy_2MKwUDN8)
 
 ## 2. Prerequisites
 ### 2.1 **Ubuntu** and **ROS**
-Ubuntu 64-bit 18.04.
+Ubuntu 64-bit 20.04.
 
-ROS Melodic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
+ROS noetic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 
 ### 2.2. **Ceres Solver**
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
@@ -45,7 +45,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 ### 2.3. **PCL**
 Follow [PCL Installation](http://www.pointclouds.org/downloads/linux.html).
 
-Tested with 1.8.1
+Tested with 1.10
 
 ### 2.4. **Trajectory visualization**
 For visualization purpose, this package uses hector trajectory sever, you may install the package by 
@@ -58,7 +58,7 @@ Alternatively, you may remove the hector trajectory server node if trajectory vi
 ### 3.1 Clone repository:
 ```
     cd ~/catkin_ws/src
-    git clone https://github.com/wh200720041/ssl_slam3.git
+    git clone https://github.com/jiejie567/R2DIO.git
     cd ..
     catkin_make
     source ~/catkin_ws/devel/setup.bash

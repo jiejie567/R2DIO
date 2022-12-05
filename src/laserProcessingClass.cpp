@@ -20,7 +20,7 @@ void LaserProcessingClass::init(std::string& file_path){
 {
 
     int length_threshold = 30;
-    int distance_threshold = 4;
+    int distance_threshold = 2;
     int canny_th1 = 50;
     int canny_th2 = 50;
     int canny_aperture_size = 3;

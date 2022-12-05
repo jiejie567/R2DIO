@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <package>
-  <name>ssl_slam3</name>
+  <name>r2dio</name>
   <version>0.0.0</version>
 
   <description>
     This work is created based on SSL_SLAM
   </description>
 
-  <maintainer email="wh200720041@gmail.com">Han Wang</maintainer>
+  <maintainer email="jeff_xu@qq.com">Jie Xu</maintainer>
 
   <license>BSD</license>
-  <url>https://wanghan.pro</url>
-  <author email="wh200720041@gmail.com">Han Wang</author>
+  <author email="jeff_xu@qq.com">Jie Xu</author>
   
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>geometry_msgs</build_depend>

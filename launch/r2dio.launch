@@ -2,6 +2,7 @@
 <launch>
     <node pkg="rosbag" type="play" name="rosbag_play" args="--clock -r 1 /home/frog/下载/record_12_6_F1_3.bag"/>
     <param name="/use_sim_time" value="true" />
+    <node pkg="r2dio" type="trajectory_listener" name="trajectory_listener" args="/r2dio/trajectory 1"/>
 
     <node pkg="tf" type="static_transform_publisher" name="word2map_tf"  args="0 0 0 1.57 3.14 1.57 /world /map 100" />
     <node pkg="tf" type="static_transform_publisher" name="base2imu_tf"  args="0 0 0 0 0 0 /odom /camera_depth_optical_frame 100" />
@@ -29,5 +30,6 @@
         <param name="/trajectory_update_rate" value="10.0" />
         <param name="/trajectory_publish_rate" value="10.0" />
     </node>
+
 
 </launch>

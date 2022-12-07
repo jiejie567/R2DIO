@@ -44,7 +44,7 @@ bool recordPathCallback(std_srvs::Trigger::Request & req, std_srvs::Trigger::Res
         geometry_msgs::Quaternion orientation;
         orientation = pose.pose.orientation;
         double time = pose.header.stamp.toSec();
-        f << time << " " << position.x << " " << position.y << " " << position.z << " " << orientation.x <<
+        f << time << " " << position.z << " " << -position.x << " " << -position.y << " " << orientation.x <<
           " " << orientation.y << " " << orientation.z << " " << orientation.w << std::endl;
     }
     f.close();

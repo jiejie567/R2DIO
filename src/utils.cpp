@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <fstream>
 
 //define global variables
 Eigen::Vector3d Utils::gravity = Eigen::Vector3d(0,0,9.81);
@@ -194,7 +195,17 @@ void TicToc::toc(int freq){
     std::chrono::duration<double> elapsed_seconds = end - start;
     total_time+= elapsed_seconds.count() * 1000;
     total_frame++;
-    if(total_frame%freq==0)
-//        std::cout<<"the average time of " << name <<" is "<< elapsed_seconds.count() * 1000 << "ms"<<std::endl;
-        std::cout<<"the average time of " << name <<" is "<< total_time/total_frame << "ms"<<std::endl;
+    std::ofstream ofs;
+    ofs.open( "/home/frog/"+name+".txt", std::ios::app);
+    if(total_frame%freq==0){
+        std::cout<<"the average time of " << name <<" is "<< elapsed_seconds.count() * 1000 << "ms"<<std::endl;
+        ofs << elapsed_seconds.count() * 1000 << std::endl;
+    }
+
+    if (!ofs.is_open()) {
+        std::cout<<"fail to open!"<<std::endl;
+
+    }
+    ofs.close();
+
 }

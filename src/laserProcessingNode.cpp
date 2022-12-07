@@ -67,7 +67,7 @@ void RGBDHandler(const sensor_msgs::ImageConstPtr& msgRGB,const sensor_msgs::Ima
     static TicToc timer("laser processing");
     timer.tic();
     laserProcessing.featureExtraction(color_pic, depth_pic, pointcloud_line, cloud_plane, cloud_filter);
-    timer.toc(100);
+    timer.toc(3);
 
     ros::Time pointcloud_time = msgRGB->header.stamp;
     sensor_msgs::PointCloud2 laserCloudFilteredMsg;

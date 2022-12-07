@@ -191,7 +191,7 @@ void odom_estimation(){
             static TicToc timer("odom estimation");
             timer.tic();
             odom_estimator.optimize();
-            timer.toc(100);
+            timer.toc(3);
         }
         Eigen::Quaterniond q_current = Utils::so3Toq(odom_estimator.pose_r_arr.back());
         Eigen::Vector3d t_current = odom_estimator.pose_t_arr.back();

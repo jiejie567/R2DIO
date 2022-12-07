@@ -59,3 +59,6 @@ target_link_libraries(r2dio_odom_estimation_node ${EIGEN3_LIBRARIES} ${catkin_LI
 
 add_executable(r2dio_laser_mapping_node src/laserMappingNode.cpp src/utils.cpp src/laserMappingClass.cpp src/param.cpp)
 target_link_libraries(r2dio_laser_mapping_node ${EIGEN3_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBS})
+
+add_executable(trajectory_listener src/tools/trajectory_listener.cpp)
+target_link_libraries(trajectory_listener ${catkin_LIBRARIES})

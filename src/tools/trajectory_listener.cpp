@@ -62,7 +62,7 @@ int main(int argc, char** argv)
     ros::Subscriber myListener;
     nh.setParam("/use_sim_time", true);
 
-    f.open("trajectory.txt", std::ios::out);
+    f.open("trajectory"+std::string(argv[2])+".txt", std::ios::out);
     f.precision(9);
     f.setf(std::ios::fixed);
 

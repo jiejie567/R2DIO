@@ -1,4 +1,4 @@
-# SSL_SLAM3 
+# R2DIO
 ## Lightweight 3-D Localization and Mapping for Solid-State LiDAR (Intel Realsense L515 as an example)
 
 ### This work provides a basic fusion framework that fuses LiDAR and IMU information to improve the stability performance of SSL_SLAM

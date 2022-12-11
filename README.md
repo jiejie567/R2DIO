@@ -1,7 +1,6 @@
 # R2DIO
-## Lightweight 3-D Localization and Mapping for Solid-State LiDAR (Intel Realsense L515 as an example)
+## Real-time, RGB-colored, Depth-Inertial Indoor Odometry for ToF RGB-D cameras. (Intel Realsense L515 as an example)
 
-### This work provides a basic fusion framework that fuses LiDAR and IMU information to improve the stability performance of SSL_SLAM
 
 If you would like to enable save map and test localization separately, you can check this repo: [SSL_SLAM2](https://github.com/wh200720041/ssl_slam2)
 
@@ -40,19 +39,24 @@ Ubuntu 64-bit 20.04.
 ROS noetic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 
 ### 2.2. **Ceres Solver**
-Follow [Ceres Installation](http://ceres-solver.org/installation.html).
+Follow [Ceres Installation](http://ceres-solver.org/installation.html). 
+Tested with 2.0
 
 ### 2.3. **PCL**
-Follow [PCL Installation](http://www.pointclouds.org/downloads/linux.html).
+Follow [PCL Installation](http://www.pointclouds.org/downloads/linux.html). 
 
-Tested with 1.10
+Tested with 1.10 (inherent in ros)
 
 ### 2.4. **Trajectory visualization**
 For visualization purpose, this package uses hector trajectory sever, you may install the package by 
 ```
-sudo apt-get install ros-melodic-hector-trajectory-server
+sudo apt update
+sudo apt install ros-noetic-hector-trajectory-server
 ```
 Alternatively, you may remove the hector trajectory server node if trajectory visualization is not needed
+
+### 2.4. **OpenCV**
+Tested with 4.2.0 (inherent in ros)
 
 ## 3. Build 
 ### 3.1 Clone repository:

@@ -131,3 +131,8 @@ If you use this work for your research, you may want to cite the paper below, yo
   pages={1801-1807},
   doi={10.1109/LRA.2021.3060392}}
 ```
+## 6. Acknowledgement
+The code is modified from [SSL-SLAM3](https://github.com/wh200720041/ssl_slam3), thanks for Wang Han's open-source spirit.
+The datasets and video are processed by [Qiu Shuxin](https://github.com/1136958879) and Huang Song
+
+

@@ -66,7 +66,7 @@ Tested with 4.2.0 (inherent in ros)
 ```
 
 ### 3.2 Download test rosbag
-You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). If you are in China, you can download the recorded data: [office](链接：https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ)  and by defult the file should be under home/user/Downloads
+You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). If you are in China, you can download the recorded data: [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ)  and by defult the file should be under home/user/Downloads
 unzip the file 
 ```
 cd ~/Downloads

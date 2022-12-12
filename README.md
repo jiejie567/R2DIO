@@ -3,7 +3,7 @@
 
 The RGB-D camera is an essential sensor in indoor SLAM, often used on lightweight robots. However, limited by computing cost, many RGB-D SLAM systems do not fully use the multi-modal information of cameras, resulting in degeneration and low accuracy in some scenes. This letter introduces a novel, lightweight, real-time, and RGB-colored depth-inertial SLAM system for ToF RGB-D cameras. To improve robustness by using texture and structure information simultaneously, it extracts line features from RGB images and plane features from depth images efficiently based on agglomerative clustering. When matching features, the line and plane direction vector is used to filter the mismatching and enhance real-time. The IMU measurements are used to predict the poses and are tightly coupled in the system by pre-integration. Finally, the system estimates the odometry and builds dense, RGB-colored maps with the following constraints: line and plane matching constraints, IMU pre-integration constraints, and historical odometry constraints. We demonstrate the accuracy and efficiency of R2DIO in the experiments. The results indicate that our system is able to locate precisely in some challenging scenes, build colorful maps and run at 30 Hz on a low-power system. 
 
-A summary video demo can be found at [Video]() 
+A summary video demo can be found at [Youtube](https://www.youtube.com/watch?v=YqJZTE948sk) and [Bilibili](https://www.bilibili.com/video/BV1GW4y1u7sz/).
 
 **Author:** Jie Xu, Harbin Institute of Technology, China
 
@@ -67,7 +67,7 @@ Tested with 4.2.0 (inherent in ros)
 ```
 
 ### 3.2 Download test rosbag
-You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). (one rosbag)
+You may download our [recorded data](https://drive.google.com/drive/folders/1S0Q351M9zEgg-Nme4obqexRQlYRJyco7?usp=sharing) (10GB). (one rosbag)
 
 If you are in China, you can download the recorded data via Baidu Netdisk
 : [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ), [hall](https://pan.baidu.com/s/16hp1APONPAn46WgFgvkm_g), and [display board](https://pan.baidu.com/s/1Ys_a9dZR9E-d9ELlY6-wug). The extraction code is 0503. (ten rosbags)

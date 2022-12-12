@@ -1,14 +1,11 @@
 # R2DIO
 ## Real-time, RGB-colored, Depth-Inertial Indoor Odometry for ToF RGB-D cameras. (Intel Realsense L515 as an example)
 
+The RGB-D camera is an essential sensor in indoor SLAM, often used on lightweight robots. However, limited by computing cost, many RGB-D SLAM systems do not fully use the multi-modal information of cameras, resulting in degeneration and low accuracy in some scenes. This letter introduces a novel, lightweight, real-time, and RGB-colored depth-inertial SLAM system for ToF RGB-D cameras. To improve robustness by using texture and structure information simultaneously, it extracts line features from RGB images and plane features from depth images efficiently based on agglomerative clustering. When matching features, the line and plane direction vector is used to filter the mismatching and enhance real-time. The IMU measurements are used to predict the poses and are tightly coupled in the system by pre-integration. Finally, the system estimates the odometry and builds dense, RGB-colored maps with the following constraints: line and plane matching constraints, IMU pre-integration constraints, and historical odometry constraints. We demonstrate the accuracy and efficiency of R$^{2}$DIO in the experiments. The results indicate that our system is able to locate precisely in some challenging scenes, build colorful maps and run at 30 Hz on a low-power system. 
 
-If you would like to enable save map and test localization separately, you can check this repo: [SSL_SLAM2](https://github.com/wh200720041/ssl_slam2)
+A summary video demo can be found at [Video]() 
 
-This code is an improved implementation of paper "Lightweight 3-D Localization and Mapping for Solid-State LiDAR", accepted in IEEE Robotics and Automation Letters, 2021
-
-A summary video demo can be found at [Video](https://youtu.be/Uy_2MKwUDN8) 
-
-**Modifier:** [Wang Han](http://wanghan.pro), Nanyang Technological University, Singapore
+**Author:** Jie Xu, Harbin Institute of Technology, China
 
 ## 1. Solid-State Lidar Sensor Example
 ### 1.1 Scene reconstruction
@@ -69,7 +66,7 @@ Tested with 4.2.0 (inherent in ros)
 ```
 
 ### 3.2 Download test rosbag
-You may download our [recorded data](https://drive.google.com/file/d/1ed5KSiXcmBxnIMcHpiy41E5sM5NtAZra/view?usp=sharing) (7.8GB) if you dont have realsense L515, and by defult the file should be under home/user/Downloads
+You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). If you are in China, you can download the recorded data: [office](链接：https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ)  and by defult the file should be under home/user/Downloads
 unzip the file 
 ```
 cd ~/Downloads

@@ -66,17 +66,14 @@ Tested with 4.2.0 (inherent in ros)
 ```
 
 ### 3.2 Download test rosbag
-You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). If you are in China, you can download the recorded data: [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ)  and by defult the file should be under home/user/Downloads
-unzip the file 
-```
-cd ~/Downloads
-unzip ~/Downloads/library.zip
-```
+You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). If you are in China, you can download the recorded data: [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ), [hall](https://pan.baidu.com/s/16hp1APONPAn46WgFgvkm_g), and [display board](https://pan.baidu.com/s/1Ys_a9dZR9E-d9ELlY6-wug).
+
 
 ### 3.3 Launch ROS
 ```
-    roslaunch ssl_slam3 ssl_slam3.launch
+    roslaunch R2DIO R2DIO.launch
 ```
+Note that change the path to your datasets.
 
 ## 4. Sensor Setup
 If you have new Realsense L515 sensor, you may follow the below setup instructions

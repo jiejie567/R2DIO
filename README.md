@@ -37,6 +37,7 @@ ROS noetic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 
 ### 2.2. **Ceres Solver**
 Follow [Ceres Installation](http://ceres-solver.org/installation.html). 
+
 Tested with 2.0
 
 ### 2.3. **PCL**
@@ -107,7 +108,7 @@ Copy [realsense_ros](https://github.com/IntelRealSense/realsense-ros) package to
 ### 4.5 Launch ROS
 Make Lidar still for 1 sec to estimate the initial bias, otherwise will cause localization failure!
 ```
-    roslaunch ssl_slam3 ssl_slam3_L515.launch
+    roslaunch R2DIO R2DIO_L515.launch
 ```
 
 ## 5. Citation

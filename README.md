@@ -72,7 +72,7 @@ You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4
 If you are in China, you can download the recorded data via Baidu Netdisk
 : [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ), [hall](https://pan.baidu.com/s/16hp1APONPAn46WgFgvkm_g), and [display board](https://pan.baidu.com/s/1Ys_a9dZR9E-d9ELlY6-wug). The extraction code is 0503. (ten rosbags)
 
-Note that due to the limitation of Google's cloud disk capacity, we only upload one rosbag. 
+Note that due to the limitation of Google drive capacity, we only upload one rosbag. 
 
 
 

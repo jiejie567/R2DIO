@@ -67,12 +67,19 @@ Tested with 4.2.0 (inherent in ros)
 ```
 
 ### 3.2 Download test rosbag
-You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). If you are in China, you can download the recorded data: [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ), [hall](https://pan.baidu.com/s/16hp1APONPAn46WgFgvkm_g), and [display board](https://pan.baidu.com/s/1Ys_a9dZR9E-d9ELlY6-wug).
+You may download our [recorded data](https://drive.google.com/file/d/11LRsnL8Be4eK5r5jWjqNwo1AqkY_aUzp/view?usp=sharing) (10GB). (one rosbag)
+
+If you are in China, you can download the recorded data via Baidu Netdisk
+: [office](https://pan.baidu.com/s/1LTos6MG4CUq3SJz6GV55tQ), [hall](https://pan.baidu.com/s/16hp1APONPAn46WgFgvkm_g), and [display board](https://pan.baidu.com/s/1Ys_a9dZR9E-d9ELlY6-wug). The extraction code is 0503. (ten rosbags)
+
+Note that due to the limitation of Google's cloud disk capacity, we only upload one rosbag. 
+
+
 
 
 ### 3.3 Launch ROS
 ```
-    roslaunch R2DIO R2DIO.launch
+    roslaunch r2dio r2dio.launch
 ```
 Note that change the path to your datasets.
 
@@ -84,7 +91,7 @@ You may read official document [L515 Calibration Manual] (https://github.com/l51
 
 use the following command to calibrate imu, note that the build-in imu is a low-grade imu, to get better accurate, you may use your own imu
 ```
-cd ~/catkin_ws/src/ssl_slam3/l515_imu_calibration
+cd ~/catkin_ws/src/r2dio/l515_imu_calibration
 python rs-imu-calibration.py
 ```
 
@@ -108,7 +115,7 @@ Copy [realsense_ros](https://github.com/IntelRealSense/realsense-ros) package to
 ### 4.5 Launch ROS
 Make Lidar still for 1 sec to estimate the initial bias, otherwise will cause localization failure!
 ```
-    roslaunch R2DIO R2DIO_L515.launch
+    roslaunch r2dio r2dio_L515.launch
 ```
 
 ## 5. Citation

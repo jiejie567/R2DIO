@@ -97,7 +97,7 @@ python rs-imu-calibration.py
 
 ### 4.2 L515
 <p align='center'>
-<img width="35%" src="/img/setup.pdf"/>
+<img width="35%" src="/img/setup.png"/>
 </p>
 
 ### 4.3 Librealsense

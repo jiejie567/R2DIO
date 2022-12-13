@@ -7,7 +7,7 @@ A summary video demo can be found at [Youtube](https://www.youtube.com/watch?v=Y
 
 **Author:** Jie Xu, Harbin Institute of Technology, China
 
-## 1. SLAM Example with Intel RealSense L515
+## 1. SLAM examples with Intel RealSense L515
 ### 1.1 In a hall
 <p align='center'>
 <a href="https://www.youtube.com/watch?v=YqJZTE948sk">

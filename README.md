@@ -5,7 +5,7 @@ The RGB-D camera is an essential sensor in indoor SLAM, often used on lightweigh
 
 A summary video demo can be found at [Youtube](https://www.youtube.com/watch?v=YqJZTE948sk) and [Bilibili](https://www.bilibili.com/video/BV1GW4y1u7sz/).
 
-**Author:** Jie Xu, Harbin Institute of Technology, China
+**Author:** Xu Jie, Harbin Institute of Technology, China
 
 ## 1. SLAM examples with Intel RealSense L515
 ### 1.1 In a hall

@@ -1,17 +1,11 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock -r 1 /media/universe/ssk/传输/Imu_Depth_Color_Points.bag"/>
+    <node pkg="rosbag" type="play" name="rosbag_play" args="--clock -r 1 yourPath"/>
     <param name="/use_sim_time" value="true" />
 
     <node pkg="tf" type="static_transform_publisher" name="word2map_tf"  args="0 0 0 1.57 3.14 1.57 /world /map 100" />
     <node pkg="tf" type="static_transform_publisher" name="base2imu_tf"  args="0 0 0 0 0 0 /odom /camera_depth_optical_frame 100" />
-<!-- 
-    <include file="$(find r2dio)/launch/rs_camera.launch">
-        <arg name="color_width" value="1280" />
-        <arg name="color_height" value="720" />
-        <arg name="filters" value="pointcloud" />    
-    </include>
-     -->
+
     <param name="file_path" value="$(find r2dio)/config/params.yaml"/>
 
     <node pkg="r2dio" type="r2dio_laser_processing_node" name="r2dio_laser_processing_node" output="screen" />

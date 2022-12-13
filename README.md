@@ -7,25 +7,25 @@ A summary video demo can be found at [Youtube](https://www.youtube.com/watch?v=Y
 
 **Author:** Jie Xu, Harbin Institute of Technology, China
 
-## 1. Solid-State Lidar Sensor Example
-### 1.1 Scene reconstruction
+## 1. SLAM Example with Intel RealSense L515
+### 1.1 In a hall
 <p align='center'>
-<a href="https://youtu.be/Ox7yDx6JslQ">
-<img width="65%" src="/img/3D_reconstruction.gif"/>
+<a href="https://www.youtube.com/watch?v=YqJZTE948sk">
+<img width="65%" src="/img/hall.png"/>
 </a>
 </p>
 
-### 1.2 SFM building example
+### 1.2 In an office
 <p align='center'>
-<a href="https://youtu.be/D2xt_5xm_Ew">
-<img width="65%" src="/img/3DMapping.gif"/>
+<a href="https://www.youtube.com/watch?v=YqJZTE948sk">
+<img width="65%" src="office.png"/>
 </a>
 </p>
 
-### 1.3 Localization and Mapping with L515
+### 1.3 Facing a display board
 <p align='center'>
-<a href="https://youtu.be/G5aruo2bSxc">
-<img width="65%" src="/img/3D_SLAM.gif"/>
+<a href="https://www.youtube.com/watch?v=YqJZTE948sk">
+<img width="65%" src="/img/displayboard.png"/>
 </a>
 </p>
 
@@ -97,7 +97,7 @@ python rs-imu-calibration.py
 
 ### 4.2 L515
 <p align='center'>
-<img width="35%" src="/img/realsense_L515.jpg"/>
+<img width="35%" src="/img/setup.pdf"/>
 </p>
 
 ### 4.3 Librealsense
@@ -119,7 +119,7 @@ Make Lidar still for 1 sec to estimate the initial bias, otherwise will cause lo
 ```
 
 ## 5. Citation
-If you use this work for your research, you may want to cite the paper below, your citation will be appreciated 
+If you use this work for your research, you may want to cite the paper below, your citation will be appreciated. The following is Wang Han's paper temporarily, we will update our paper as soon as our paper being accepted.
 ```
 @article{wang2021lightweight,
   author={H. {Wang} and C. {Wang} and L. {Xie}},

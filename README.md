@@ -18,7 +18,7 @@ A summary video demo can be found at [Youtube](https://www.youtube.com/watch?v=Y
 ### 1.2 In an office
 <p align='center'>
 <a href="https://www.youtube.com/watch?v=YqJZTE948sk">
-<img width="65%" src="office.png"/>
+<img width="65%" src="/img/office.png"/>
 </a>
 </p>
 

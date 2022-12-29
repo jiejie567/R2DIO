@@ -117,7 +117,8 @@ Make Lidar still for 1 sec to estimate the initial bias, otherwise will cause lo
 ```
     roslaunch r2dio r2dio_L515.launch
 ```
-
+### 4.6 Docker suppot
+You can see the details in docker_support.pdf. Thanks for [Yin Ao](https://github.com/coolaogege)'s work about the docker.
 ## 5. Citation
 If you use this work for your research, you may want to cite the paper below, your citation will be appreciated. The following is Wang Han's paper temporarily, we will update our paper as soon as our paper being accepted.
 ```

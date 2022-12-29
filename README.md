@@ -137,6 +137,8 @@ The code is heavily derived from [SSL-SLAM3](https://github.com/wh200720041/ssl_
 
 The datasets and video are processed by [Qiu Shuxin](https://github.com/1136958879) and Huang Song.
 
+The docker is created by [Yin Ao](https://github.com/coolaogege).
+
 What's more, the "DIO" in the title "R2DIO" means:
 <p align='center'>
 <img width="35%" src="/img/dio.jpg"/>

@@ -16,6 +16,8 @@ common:
                0.0, 0.0, 0.0, 1.0]
 
 lidar:
+    rgb_topic: "/camera/color/image_raw"
+    depth_topic: "/camera/aligned_depth_to_color/image_raw"
     frequency: 30
     camera_factor: 1000.0
     camera_cx: 330.275
@@ -46,6 +48,7 @@ lidar:
 imu:
     # note that we follow the value unit from kalibr  link:https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model
     # if you use imu_utils, the result is in discrete time, you can simply set frequency to 1
+    imu_topic: "/camera/imu"
     frequency: 200
     acc_n: 1.176e-2   # 1.176e-2m/s^2 * 1/sqrt(Hz) continuous time
     gyr_n: 2.443e-3   # 2.443e-3rad/s * 1/sqrt(Hz) continuous time

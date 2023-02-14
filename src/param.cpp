@@ -88,7 +88,9 @@ void LidarParam::loadParam(std::string& path){
     cv::FileStorage fsSettings(path, cv::FileStorage::READ);
     if(!fsSettings.isOpened())
         cerr << "ERROR: Wrong path to settings" << endl;
-    cv::FileNode node = fsSettings["lidar"]; 
+    cv::FileNode node = fsSettings["lidar"];
+    rgb_topic = readString(node,"rgb_topic","/camera/color/image_raw");
+    depth_topic = readString(node,"depth_topic","/camera/aligned_depth_to_color/image_raw");
     camera_factor = readDouble(node,"camera_factor",1000);
     camera_cx = readDouble(node,"camera_cx",333.891);
     camera_cy = readDouble(node,"camera_cy",254.687);
@@ -169,6 +171,7 @@ void ImuParam::loadParam(std::string& path){
     cv::FileNode node = fsSettings["imu"]; 
     frequency = readInt(node,"frequency",200);
     double freq_sr = sqrt((double)frequency);
+    imu_topic = readString(node,"imu_topic","/camera/imu");
     double acc_n_in = readDouble(node,"acc_n",1e-2);
     double gyr_n_in = readDouble(node,"gyr_n",1e-3);
     double acc_w_in = readDouble(node,"acc_w",1e-3);

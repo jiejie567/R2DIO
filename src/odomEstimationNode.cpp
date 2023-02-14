@@ -227,7 +227,7 @@ int main(int argc, char **argv) {
     nh.getParam("/file_path", file_path); 
     odom_estimator.init(file_path);
 
-    ros::Subscriber sub_imu = nh.subscribe<sensor_msgs::Imu>("/camera/imu", 100, imuCallback);
+    ros::Subscriber sub_imu = nh.subscribe<sensor_msgs::Imu>(odom_estimator.imu_param.imu_topic, 100, imuCallback);
     ros::Subscriber sub_edge_cloud = nh.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_line", 100, edgeCloudHandler);
     ros::Subscriber sub_plane_cloud = nh.subscribe<sensor_msgs::PointCloud2>("/laser_cloud_plane", 100,
                                                                              planeCloudHandler);

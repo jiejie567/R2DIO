@@ -119,7 +119,7 @@ void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_i
     typedef ahc::PlaneFitter< OrganizedImage3D > PlaneFitter;
 
     cv::Mat_<cv::Vec3f> cloud_peac(depth_im.rows, depth_im.cols);
-    cloud_filter->resize(640*480);
+    cloud_filter->resize(depth_im.rows*depth_im.cols);
     omp_set_num_threads(2);
 #pragma omp parallel for
     for (int r = 0; r < depth_im.rows; r++) {
@@ -140,9 +140,9 @@ void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_i
                 p.g = color_im.ptr<uchar>(r)[c * 3 + 1];
                 p.r = color_im.ptr<uchar>(r)[c * 3 + 2];
 
-                pt_ptr[c][0] = p.x * 1000.0;//m->mm
-                pt_ptr[c][1] = p.y * 1000.0;//m->mm
-                pt_ptr[c][2] = z * 1000.0;//m->mm
+                pt_ptr[c][0] = p.x * lidar_param.camera_factor;//m->mm
+                pt_ptr[c][1] = p.y * lidar_param.camera_factor;//m->mm
+                pt_ptr[c][2] = z * lidar_param.camera_factor;//m->mm
             }
         }
 

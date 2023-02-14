@@ -45,6 +45,8 @@ class LidarParam{
         int getMapCellWidthRange(void);
         int getMapCellHeightRange(void);
         int getMapCellDepthRange(void);
+        string rgb_topic;
+        string depth_topic;
         double camera_factor;
         double camera_cx;
         double camera_cy;
@@ -80,7 +82,8 @@ class ImuParam{
         double getGyrN(void);
         double getAccW(void);
         double getGyrW(void);
-    private:
+        string imu_topic;
+private:
         int frequency;
         double acc_n;
         double gyr_n;

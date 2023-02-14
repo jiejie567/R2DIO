@@ -52,11 +52,12 @@ class OdomEstimationClass{
 		void addImuPreintegration(std::vector<double> dt_arr, std::vector<Eigen::Vector3d> acc_arr, std::vector<Eigen::Vector3d> gyr_arr);
 		void addLidarFeature(const pcl::PointCloud<pcl::PointXYZRGBL>::Ptr edge_in, const pcl::PointCloud<pcl::PointXYZRGBL>::Ptr plane_in);
 		void optimize(void);
+        ImuParam imu_param;
 
-	private:
+
+private:
 		CommonParam common_param;
 		LidarParam lidar_param;
-		ImuParam imu_param;
 
 		// map points
 		pcl::PointCloud<pcl::PointXYZRGBL>::Ptr edge_map;

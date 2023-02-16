@@ -10,6 +10,7 @@ void LaserProcessingClass::init(std::string& file_path){
 
 
     lidar_param.loadParam(file_path);
+    common_param.loadParam(file_path);
     num_of_plane=0;
     num_of_line=0;
     gap_line = lidar_param.gap_line;
@@ -82,11 +83,18 @@ void LaserProcessingClass::init(std::string& file_path){
 
         Eigen::VectorXf coef;
         ransac.getModelCoefficients(coef);
+        //tramsform to IMU
+        Eigen::Vector4d tmp(coef[3],coef[4],coef[5],0.0);
+        tmp = common_param.getTbl().matrix()*tmp;
+
         pcl::PointXYZRGBL line_direction_info;
-        line_direction_info.x = coef[3]; //nx
-        line_direction_info.y = coef[4]; //ny
-        line_direction_info.z = coef[5]; //nz
+        line_direction_info.x = tmp[0]; //nx
+        line_direction_info.y = tmp[1]; //ny
+        line_direction_info.z = tmp[2]; //nz
         line_direction_info.label = num_of_line;
+
+
+
         line_info_cloud->push_back(line_direction_info);
 
         num_of_line++;
@@ -96,12 +104,14 @@ void LaserProcessingClass::init(std::string& file_path){
     line_num.x = static_cast<float>(line_cnt);
     pcl::PointCloud<pcl::PointXYZRGBL>::Ptr line_num_cloud(new pcl::PointCloud<pcl::PointXYZRGBL>);
     line_num_cloud->push_back(line_num);
+    //transform to IMU
+    pcl::transformPointCloud(*cloud_all_line, *cloud_all_line, common_param.getTbl().cast<float>());
     *pc_out_line = *line_num_cloud + *line_info_cloud + *cloud_all_line;
 }
 
 void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_im, pcl::PointCloud<pcl::PointXYZRGBL>::Ptr& pc_out_line,
         pcl::PointCloud<pcl::PointXYZRGBL>::Ptr& pc_out_plane, pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud_filter){
-
+cout<<color_im.size<<" "<<depth_im.size<<endl;
     struct OrganizedImage3D {
         const cv::Mat_<cv::Vec3f>& cloud_peac;
         //note: ahc::PlaneFitter assumes mm as unit!!!
@@ -117,35 +127,36 @@ void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_i
         }
     };
     typedef ahc::PlaneFitter< OrganizedImage3D > PlaneFitter;
-
     cv::Mat_<cv::Vec3f> cloud_peac(depth_im.rows, depth_im.cols);
     cloud_filter->resize(depth_im.rows*depth_im.cols);
     omp_set_num_threads(2);
 #pragma omp parallel for
     for (int r = 0; r < depth_im.rows; r++) {
         const float *depth_ptr = depth_im.ptr<float>(r);
-            cv::Vec3f *pt_ptr = cloud_peac.ptr<cv::Vec3f>(r);
-            for (int c = 0; c < depth_im.cols; c++) {
-                float z = (float) depth_ptr[c] / lidar_param.camera_factor;
-                if (z > lidar_param.max_distance || z < lidar_param.min_distance || isnan(z)) {
-                    z = 0.0;
-                    depth_im.at<float>(r, c) = 0;
-                }
-                pcl::PointXYZRGB& p= cloud_filter->points[r*depth_im.cols+c];
-                p.z = z;
-                p.x = (c - lidar_param.camera_cx) * p.z / lidar_param.camera_fx;
-                p.y = (r - lidar_param.camera_cy) * p.z / lidar_param.camera_fy;
-
-                p.b = color_im.ptr<uchar>(r)[c * 3];
-                p.g = color_im.ptr<uchar>(r)[c * 3 + 1];
-                p.r = color_im.ptr<uchar>(r)[c * 3 + 2];
-
-                pt_ptr[c][0] = p.x * lidar_param.camera_factor;//m->mm
-                pt_ptr[c][1] = p.y * lidar_param.camera_factor;//m->mm
-                pt_ptr[c][2] = z * lidar_param.camera_factor;//m->mm
+        cv::Vec3f *pt_ptr = cloud_peac.ptr<cv::Vec3f>(r);
+        for (int c = 0; c < depth_im.cols; c++) {
+            float z = (float) depth_ptr[c] / lidar_param.camera_factor;
+            if (z > lidar_param.max_distance || z < lidar_param.min_distance || isnan(z)) {
+                z = 0.0;
+                depth_im.at<float>(r, c) = 0;
             }
-        }
+            pcl::PointXYZRGB &p = cloud_filter->points[r * depth_im.cols + c];
+            p.z = z;
+            p.x = (c - lidar_param.camera_cx) * p.z / lidar_param.camera_fx;
+            p.y = (r - lidar_param.camera_cy) * p.z / lidar_param.camera_fy;
 
+            p.b = color_im.ptr<uchar>(r)[c * 3];
+            p.g = color_im.ptr<uchar>(r)[c * 3 + 1];
+            p.r = color_im.ptr<uchar>(r)[c * 3 + 2];
+
+            pt_ptr[c][0] = p.x * lidar_param.camera_factor;//m->mm
+            pt_ptr[c][1] = p.y * lidar_param.camera_factor;//m->mm
+            pt_ptr[c][2] = z * lidar_param.camera_factor;//m->mm
+        }
+    }
+    // transform to IMU
+    Eigen::Isometry3d T_bl = common_param.getTbl();
+    pcl::transformPointCloud(*cloud_filter, *cloud_filter, T_bl.cast<float>());
     // line filter
     thread th2(&LaserProcessingClass::lineFilter, this, std::ref(color_im), std::ref(cloud_peac), std::ref(pc_out_line));
 
@@ -215,11 +226,15 @@ void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_i
         {
             coefficient = -coefficient;
         }
+        // transfrom to IMU
+        Eigen::Vector4d tmp(coefficient[0],coefficient[1],coefficient[2],coefficient[3]);
+        tmp = T_bl.matrix().transpose().inverse()*tmp;
+
         pcl::PointXYZRGBL plane_info;
-        plane_info.x = coefficient[0];
-        plane_info.y = coefficient[1];
-        plane_info.z = coefficient[2];
-        plane_info.data[3] = coefficient[3];
+        plane_info.x = tmp[0];
+        plane_info.y = tmp[1];
+        plane_info.z = tmp[2];
+        plane_info.data[3] = tmp[3];
         plane_info.rgb = cloud_plane->size();
         plane_info.label = num_of_plane;
         plane_info_cloud->push_back(plane_info);
@@ -231,6 +246,8 @@ void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_i
     plane_num.x = static_cast<float>(plane_cnt);
     pcl::PointCloud<pcl::PointXYZRGBL>::Ptr plane_num_cloud(new pcl::PointCloud<pcl::PointXYZRGBL>);
     plane_num_cloud->push_back(plane_num);
+    //tramsform to IMU
+    pcl::transformPointCloud(*cloud_all_plane, *cloud_all_plane, T_bl.cast<float>());
     *pc_out_plane = *plane_num_cloud + *plane_info_cloud + *cloud_all_plane;//num of plane + plane info + plane points
     th2.join();
 }

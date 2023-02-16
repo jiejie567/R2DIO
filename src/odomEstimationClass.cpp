@@ -152,7 +152,7 @@ void OdomEstimationClass::addLidarFeature(const pcl::PointCloud<pcl::PointXYZRGB
     for (auto i : indexs)
     {
         Eigen::Vector4d plane(plane_in->at(i).x, plane_in->at(i).y, plane_in->at(i).z, plane_in->at(i).data[3]);
-        plane = T_bl.matrix().transpose().inverse()*plane;
+        // plane = T_bl.matrix().transpose().inverse()*plane;
         m_current_plane_info[plane_in->at(i).label] = plane;
     }
     plane_in->erase(plane_in->begin(), plane_in->begin() + current_plane_num + 1);
@@ -167,12 +167,14 @@ void OdomEstimationClass::addLidarFeature(const pcl::PointCloud<pcl::PointXYZRGB
     for (auto i : indexs_line)
     {
         Eigen::Vector4d line_direction(edge_in->at(i).x,edge_in->at(i).y,edge_in->at(i).z,0.f);
-        line_direction = T_bl.matrix()*line_direction;
+        // line_direction = T_bl.matrix()*line_direction;
         m_current_line_info[edge_in->at(i).label] = line_direction;
     }
     edge_in->erase(edge_in->begin(),edge_in->begin()+current_line_num+1);
-    pcl::transformPointCloud(*edge_in, *current_edge_points, T_bl.cast<float>());
-    pcl::transformPointCloud(*plane_in, *current_plane_points, T_bl.cast<float>());
+    current_edge_points = edge_in;
+    current_plane_points = plane_in;
+    // pcl::transformPointCloud(*edge_in, *current_edge_points, T_bl.cast<float>());
+    // pcl::transformPointCloud(*plane_in, *current_plane_points, T_bl.cast<float>());
 }
 
 void OdomEstimationClass::addEdgeCost(ceres::Problem& problem, ceres::LossFunction *loss_function, double* pose, int cnt){

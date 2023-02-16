@@ -42,7 +42,7 @@ lidar:
     map_cell_height_range: 4
     map_cell_depth_range: 4
 
-    gap_plane: 25
+    gap_plane: 20
     gap_line: 20
 
 imu:

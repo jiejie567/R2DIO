@@ -111,7 +111,6 @@ void LaserProcessingClass::init(std::string& file_path){
 
 void LaserProcessingClass::featureExtraction(cv::Mat& color_im, cv::Mat& depth_im, pcl::PointCloud<pcl::PointXYZRGBL>::Ptr& pc_out_line,
         pcl::PointCloud<pcl::PointXYZRGBL>::Ptr& pc_out_plane, pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud_filter){
-cout<<color_im.size<<" "<<depth_im.size<<endl;
     struct OrganizedImage3D {
         const cv::Mat_<cv::Vec3f>& cloud_peac;
         //note: ahc::PlaneFitter assumes mm as unit!!!

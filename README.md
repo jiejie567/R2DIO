@@ -120,8 +120,18 @@ Make Lidar still for 1 sec to estimate the initial bias, otherwise will cause lo
 ### 4.6 Docker suppot
 You can see the details in docker_support.pdf. Thanks for [Yin Ao](https://github.com/coolaogege)'s work about the docker.
 ## 5. Citation
-If you use this work for your research, you may want to cite the paper below, your citation will be appreciated. The following is Wang Han's paper temporarily, we will update our paper as soon as our paper being accepted.
+If you use this work for your research, you may want to cite the paper below, your citation will be appreciated.
 ```
+@ARTICLE{10268066,
+  author={Xu, Jie and Li, Ruifeng and Huang, Song and Zhao, Xiongwei and Qiu, Shuxin and Chen, Zhijun and Zhao, Lijun},
+  journal={IEEE Transactions on Instrumentation and Measurement}, 
+  title={R2DIO: A Robust and Real-Time Depth-Inertial Odometry Leveraging Multimodal Constraints for Challenging Environments}, 
+  year={2023},
+  volume={72},
+  number={},
+  pages={1-11},
+  doi={10.1109/TIM.2023.3320753}}
+
 @article{wang2021lightweight,
   author={H. {Wang} and C. {Wang} and L. {Xie}},
   journal={IEEE Robotics and Automation Letters}, 
